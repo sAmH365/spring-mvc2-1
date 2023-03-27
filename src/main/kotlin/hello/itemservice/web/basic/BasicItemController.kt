@@ -57,6 +57,19 @@ class BasicItemController(
         return "basic/item"
     }
 
+    @GetMapping("/{itemId}/edit")
+    fun editForm(@PathVariable itemId: Long, model:Model): String {
+        val item = itemRepository.findById(itemId)
+        model.addAttribute("item", item)
+        return "basic/editForm"
+    }
+
+    @PostMapping("/{itemId}/edit")
+    fun edit(@PathVariable itemId: Long, item:Item): String {
+        itemRepository.update(itemId, item)
+        return "redirect:/basic/items/{itemId}"
+    }
+
     /**
      * 테스트용 데이터 추가
      */
