@@ -51,10 +51,16 @@ class BasicItemController(
         return "basic/item"
     }
 
-    @PostMapping("/add")
+//    @PostMapping("/add")
     fun addItemV3(item: Item): String {
         itemRepository.save(item)
         return "basic/item"
+    }
+
+    @PostMapping("/add")
+    fun addItemV4(item: Item): String {
+        itemRepository.save(item)
+        return "redirect:/basic/items/${item.id}"
     }
 
     @GetMapping("/{itemId}/edit")
