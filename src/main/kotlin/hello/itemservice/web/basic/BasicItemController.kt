@@ -6,6 +6,7 @@ import jakarta.annotation.PostConstruct
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -36,9 +37,24 @@ class BasicItemController(
         return "basic/addForm"
     }
 
+//    @PostMapping("/add")
+    fun addItemV1(@ModelAttribute("item") item: Item): String {
+        itemRepository.save(item)
+//        model.addAttribute("item", item)  // @ModelAttribute 사용하면 자동추가, 생략 가능
+
+        return "basic/item"
+    }
+
+//    @PostMapping("/add")
+    fun addItemV2(@ModelAttribute item: Item): String {
+        itemRepository.save(item) // @ModelAttribute에 name 속성 지정하지 않으면 클래스명의 첫글자를 소문자를 바꾼값(item)을 model에 넣어준다.
+        return "basic/item"
+    }
+
     @PostMapping("/add")
-    fun save(): String {
-        return "basic/addForm"
+    fun addItemV3(item: Item): String {
+        itemRepository.save(item)
+        return "basic/item"
     }
 
     /**
