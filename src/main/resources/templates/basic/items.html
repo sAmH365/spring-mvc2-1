@@ -28,8 +28,8 @@
             </thead>
             <tbody>
             <tr th:each="item : ${items}">
-                <td><a href="item.html" th:href="@{basic/items/{itemId}(itemId=${item.id})}" th:text="${item.getId()}">회원id</a></td>
-                <td><a href="item.html" th:href="@{basic/items/{itemId}(itemId=${item.id})}" th:text="${item.getItemName()}">상품명</a></td>
+                <td><a href="item.html" th:href="@{/basic/items/{itemId}(itemId=${item.id})}" th:text="${item.getId()}">회원id</a></td>
+                <td><a href="item.html" th:href="@{/basic/items/{itemId}(itemId=${item.id})}" th:text="${item.getItemName()}">상품명</a></td>
                 <td th:text="${item.getPrice()}">가격</td>
                 <td th:text="${item.getQuantity()}">수량</td>
             </tr>
