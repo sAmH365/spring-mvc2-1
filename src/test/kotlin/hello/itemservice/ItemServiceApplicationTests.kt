@@ -8,6 +8,7 @@ class ItemServiceApplicationTests {
 
 	@Test
 	fun contextLoads() {
+		println()
 	}
 
 }
