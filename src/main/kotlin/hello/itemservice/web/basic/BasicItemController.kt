@@ -34,7 +34,8 @@ class BasicItemController(
     }
 
     @GetMapping("/add")
-    fun addForm(): String {
+    fun addForm(model: Model): String {
+        model.addAttribute("item", Item())
         return "basic/addForm"
     }
 
